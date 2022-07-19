@@ -1,0 +1,12 @@
+[
+    {
+        "id": 0,
+        "title": "The first post",
+        "abstract": "Abstract 1"
+    },
+    {
+        "id": 1,
+        "title": "The second post",
+        "abstract": "Abstract 2"
+    }
+]

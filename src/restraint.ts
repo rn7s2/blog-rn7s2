@@ -1,0 +1,1 @@
+// This empty .ts file is intended to restrain the error report related to TypeScript config.

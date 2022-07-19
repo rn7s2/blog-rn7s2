@@ -1,0 +1,12 @@
+[
+    {
+        "title": "第一个页面",
+        "name": "page1",
+        "link": "/page1"
+    },
+    {
+        "title": "关于",
+        "name": "about",
+        "link": "/about"
+    }
+]

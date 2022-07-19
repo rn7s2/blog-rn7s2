@@ -1,26 +1,46 @@
-import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import { createRouter, createWebHashHistory } from 'vue-router'
+import store from '@/store'
+import Axios from 'axios'
+import HomeView from '@/views/HomeView'
+import PageView from '@/views/PageView'
 
 const routes = [
   {
-    path: "/",
-    name: "home",
-    component: HomeView,
+    path: '/',
+    name: 'home',
+    component: HomeView
   },
   {
-    path: "/about",
-    name: "about",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
-  },
-];
+    path: '/posts/:id',
+    name: 'post',
+    component: () => import('@/views/PostView')
+  }
+]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes,
-});
+  history: createWebHashHistory(),
+  routes
+})
 
-export default router;
+let routesLoaded = false
+router.beforeEach(async (to, from, next) => {
+  if (!routesLoaded) {
+    routesLoaded = true
+    // in the future, get /api/pages
+    await Axios.get('/pages.json').then(async response => {
+      store.commit('setPages', response.data)
+      await response.data.forEach(async element => {
+        await router.addRoute({
+          path: element.link,
+          name: element.name,
+          component: PageView
+        })
+      })
+    })
+    next({ ...to, replace: true })
+  } else {
+    next()
+  }
+})
+
+export default router
