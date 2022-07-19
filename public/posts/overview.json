@@ -2,11 +2,15 @@
     {
         "id": 0,
         "title": "The first post",
+        "author": "雷瑞祺",
+        "updated": "2022-07-19 18:06:00",
         "abstract": "Abstract 1"
     },
     {
         "id": 1,
         "title": "The second post",
+        "author": "雷瑞祺",
+        "updated": "2022-07-19 20:30:00",
         "abstract": "Abstract 2"
     }
 ]

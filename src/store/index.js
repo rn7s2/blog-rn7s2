@@ -3,6 +3,7 @@ import Axios from 'axios'
 
 export default createStore({
   state: {
+    blogTitle: '',
     pages: [],
     pageDetail: null,
     postsOverview: null,
@@ -11,8 +12,18 @@ export default createStore({
   getters: {
   },
   mutations: {
+    // blog basic info
+    fetchBlogBasicInfo: async (state) => {
+      // in the future, get /config
+      await Axios.get('/config.json').then(response => {
+        state.blogTitle = response.data.title
+      })
+    },
+
+    // pages
     setPages: (state, pages) => { state.pages = pages },
 
+    // page
     clearPage: state => { state.pageDetail = null },
     fetchPageDetail: async (state, name) => {
       // in the future, get /api/pages/:name
@@ -21,6 +32,7 @@ export default createStore({
       })
     },
 
+    // posts' overview
     clearPostsOverview: state => { state.postsOverview = null },
     fetchPostsOverview: async (state) => {
       // in the future, get /api/posts/overview
@@ -29,6 +41,7 @@ export default createStore({
       })
     },
 
+    // post
     clearPost: state => { state.postDetail = null },
     fetchPostDetail: async (state, id) => {
       // in the future, get /api/posts/:id

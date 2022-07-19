@@ -3,8 +3,16 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import marked from './mixins/marked'
-import { provideFluentDesignSystem, fluentCard, fluentButton } from '@fluentui/web-components';
+import vuetify from './plugins/vuetify'
+import { loadFonts } from './plugins/webfontloader'
+import LoadingView from '@/components/LoadingView'
 
-provideFluentDesignSystem().register(fluentCard(), fluentButton());
+loadFonts()
 
-createApp(App).mixin(marked).use(store).use(router).mount('#app')
+createApp(App)
+  .mixin(marked)
+  .use(router)
+  .use(store)
+  .use(vuetify)
+  .component('loading-view', LoadingView)
+  .mount('#app')

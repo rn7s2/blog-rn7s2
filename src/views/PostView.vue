@@ -10,7 +10,7 @@
     <hr />
     <div v-html="content"></div>
   </div>
-  <div v-else>加载中……</div>
+  <loading-view v-else />
 </template>
 
 <script>

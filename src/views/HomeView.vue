@@ -1,17 +1,31 @@
 <template>
-  <div v-if="isPostsOverviewLoaded">
-    <div v-for="postOverview in postsOverview" :key="postOverview.id">
-      <router-link :to="{ path: '/posts/' + postOverview.id }">{{ postOverview.title }}</router-link>
-      <p>Abstract:</p>
-      <p>{{ postOverview.abstract }}</p>
+  <v-container fluid>
+    <div v-if="isPostsOverviewLoaded">
+      <v-card v-for="postOverview in postsOverview" :key="postOverview.id">
+        <v-card-title>{{ postOverview.title }}</v-card-title>
+        <v-card-subtitle>
+          {{ postOverview.author }}，最后更新于 {{ postOverview.updated }}
+        </v-card-subtitle>
+        <v-card-text>{{ postOverview.abstract }}</v-card-text>
+        <v-card-actions>
+          <v-btn variant="tonal" @click="to('/posts/' + postOverview.id)">继续阅读</v-btn>
+        </v-card-actions>
+      </v-card>
     </div>
-  </div>
-  <div v-else>加载中……</div>
+    <loading-view v-else />
+  </v-container>
 </template>
 
 <script>
-export default {
+import { defineComponent } from 'vue';
+
+export default defineComponent({
   name: 'HomeView',
+  methods: {
+    to(link) {
+      this.$router.push({ path: link })
+    }
+  },
   mounted() {
     this.$store.commit('clearPostsOverview')
     this.$store.commit('fetchPostsOverview')
@@ -24,5 +38,5 @@ export default {
       return this.$store.state.postsOverview
     }
   }
-}
+});
 </script>
