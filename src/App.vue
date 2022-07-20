@@ -12,10 +12,12 @@
         </template>
         <v-spacer />
         <v-switch class="d-flex justify-end align-center mr-2" v-model="darkMode" :label="`暗色`"></v-switch>
-        <v-btn @click="to('/')">主页</v-btn>
-        <v-btn v-for="page in pages" :key="page.link" @click="to(page.link)">
-          {{ page.title }}
-        </v-btn>
+        <div class="d-none d-md-flex">
+          <v-btn @click="to('/')">主页</v-btn>
+          <v-btn v-for="page in pages" :key="page.link" @click="to(page.link)">
+            {{ page.title }}
+          </v-btn>
+        </div>
       </v-app-bar>
       <v-navigation-drawer v-model="drawer" bottom temporary>
         <v-list>
