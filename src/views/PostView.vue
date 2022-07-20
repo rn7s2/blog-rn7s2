@@ -1,14 +1,13 @@
 <template>
-  <div v-if="isPageDetailLoaded">
-    <h1>{{ title }}</h1>
-    <ul>
-      <li>{{ author }}</li>
-      <li>{{ updateTime }}</li>
-    </ul>
-    <hr />
-    <div v-html="abstract"></div>
-    <hr />
-    <div v-html="content"></div>
+  <div class="mx-md-16 px-md-16" v-if="isPostDetailLoaded">
+    <div class="mx-md-16">
+      <h1 class="mx-1">{{ title }}</h1>
+      <p class="mx-1">{{ author }}，最后更新于 {{ updateTime }}</p>
+      <v-divider class="my-3" />
+      <blackquote class="mx-6" v-html="abstract" />
+      <v-divider class="my-3" />
+      <div class="mx-6" v-html="content"></div>
+    </div>
   </div>
   <loading-view v-else />
 </template>
@@ -32,7 +31,7 @@ export default {
     this.$store.commit('fetchPostDetail', this.$route.params.id)
   },
   computed: {
-    isPageDetailLoaded() {
+    isPostDetailLoaded() {
       return this.$store.state.postDetail != null
     },
     author() {

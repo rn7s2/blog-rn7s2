@@ -2,5 +2,5 @@
     "author": "雷瑞祺",
     "updated": "2022-07-19 14:11:00",
     "title": "Page1",
-    "content": "This is Page1."
+    "content": "- This is Page1.\n\n$$\\int_a^b f(x)\\mathrm{d}x$$\n\n```cpp\n#include <iostream>\n```"
 }
