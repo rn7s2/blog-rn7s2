@@ -1,10 +1,12 @@
 <template>
-  <div class="mx-md-16 px-md-16" v-if="isPageDetailLoaded">
-    <div class="mx-md-16">
-      <h1 class="mx-1">{{ title }}</h1>
-      <p class="mx-1">{{ author }}，最后更新于 {{ updateTime }}</p>
-      <v-divider class="my-3" />
-      <div class="mx-6" v-html="content"></div>
+  <div class="mx-lg-12" v-if="isPageDetailLoaded">
+    <div class="mx-sm-16 mx-lg-16 px-lg-16">
+      <div class="mx-md-14 px-md-14">
+        <h1 class="mx-1">{{ title }}</h1>
+        <p class="mx-1">{{ author }}，最后更新于 {{ updateTime }}</p>
+        <v-divider class="my-3" />
+        <div class="mx-6" v-html="content"></div>
+      </div>
     </div>
   </div>
   <loading-view v-else />
