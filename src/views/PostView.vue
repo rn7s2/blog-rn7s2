@@ -5,7 +5,7 @@
         <h1 class="mx-1">{{ title }}</h1>
         <p class="mx-1">{{ author }}，最后更新于 {{ updateTime }}</p>
         <v-divider class="my-3" />
-        <blackquote class="mx-6" v-html="abstract" />
+        <div class="mx-6" v-html="abstract"></div>
         <v-divider class="my-3" />
         <div class="mx-6" v-html="content"></div>
       </div>
