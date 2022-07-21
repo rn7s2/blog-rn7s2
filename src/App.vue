@@ -56,6 +56,7 @@ export default {
   },
   computed: {
     blogTitle() {
+      document.title = this.$store.state.blogTitle
       return this.$store.state.blogTitle
     },
     pages() {
