@@ -26,12 +26,11 @@ let routesLoaded = false
 router.beforeEach(async (to, from, next) => {
   if (!routesLoaded) {
     routesLoaded = true
-    // in the future, get /api/pages
-    await Axios.get('/pages.json').then(async response => {
+    await Axios.get('/api/pages/config').then(async response => {
       store.commit('setPages', response.data)
       await response.data.forEach(async element => {
         await router.addRoute({
-          path: element.link,
+          path: '/' + element.name,
           name: element.name,
           component: PageView
         })

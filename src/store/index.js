@@ -14,8 +14,7 @@ export default createStore({
   mutations: {
     // blog basic info
     fetchBlogBasicInfo: async (state) => {
-      // in the future, get /config
-      await Axios.get('/config.json').then(response => {
+      await Axios.get('/api/config').then(response => {
         state.blogTitle = response.data.title
       })
     },
@@ -26,8 +25,7 @@ export default createStore({
     // page
     clearPage: state => { state.pageDetail = null },
     fetchPageDetail: async (state, name) => {
-      // in the future, get /api/pages/:name
-      await Axios.get('/pages/' + name + '.json').then(response => {
+      await Axios.get('/api/pages/' + name).then(response => {
         state.pageDetail = response.data
       })
     },
@@ -35,8 +33,7 @@ export default createStore({
     // posts' overview
     clearPostsOverview: state => { state.postsOverview = null },
     fetchPostsOverview: async (state) => {
-      // in the future, get /api/posts/overview
-      await Axios.get('/posts/overview.json').then(response => {
+      await Axios.get('/api/posts/overview').then(response => {
         state.postsOverview = response.data
       })
     },
@@ -44,8 +41,7 @@ export default createStore({
     // post
     clearPost: state => { state.postDetail = null },
     fetchPostDetail: async (state, id) => {
-      // in the future, get /api/posts/:id
-      await Axios.get('/posts/' + id + '.json').then(response => {
+      await Axios.get('/api/posts/' + id).then(response => {
         state.postDetail = response.data
       })
     }
