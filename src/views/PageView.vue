@@ -38,7 +38,7 @@ export default {
       return this.$store.state.pageDetail.author
     },
     updateTime() {
-      return this.$store.state.pageDetail.updated
+      return new Date(this.$store.state.pageDetail.updated).format('yyyy-MM-dd HH:mm:dd')
     },
     title() {
       return this.$store.state.pageDetail.title

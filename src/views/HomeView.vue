@@ -8,7 +8,7 @@
             @click="to('/posts/' + postOverview.id)">
             <v-card-title class="text-h5">{{ postOverview.title }}</v-card-title>
             <v-card-subtitle>
-              {{ postOverview.author }}，最后更新于 {{ postOverview.updated.substring(0, postOverview.updated.length - 3) }}
+              {{ postOverview.author }}，最后更新于 {{ new Date(postOverview.updated).format('yyyy-MM-dd HH:mm') }}
             </v-card-subtitle>
             <v-card-text class="mx-2" v-html="this.markdown(postOverview.abstract)"></v-card-text>
             <v-card-actions>

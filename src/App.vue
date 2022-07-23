@@ -14,7 +14,7 @@
         <v-switch class="d-flex justify-end align-center mr-2" v-model="darkMode" :label="`暗色`"></v-switch>
         <div class="d-none d-md-flex">
           <v-btn @click="to('/')">主页</v-btn>
-          <v-btn v-for="page in pages" :key="page.link" @click="to(page.link)">
+          <v-btn v-for="page in pages" :key="page.id" @click="to('/' + page.name)">
             {{ page.title }}
           </v-btn>
         </div>
@@ -23,7 +23,7 @@
         <v-list>
           <v-switch class="d-flex align-center ml-5" v-model="darkMode" :label="`暗色`"></v-switch>
           <v-list-item @click="to('/')">主页</v-list-item>
-          <v-list-item v-for="page in pages" :key="page.link" @click="to(page.link)">
+          <v-list-item v-for="page in pages" :key="page.id" @click="to('/' + page.name)">
             {{ page.title }}
           </v-list-item>
         </v-list>
