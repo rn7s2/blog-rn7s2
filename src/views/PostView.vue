@@ -40,7 +40,7 @@ export default {
       return this.$store.state.postDetail.author
     },
     updateTime() {
-      return new Date(this.$store.state.postDetail.updated).format('yyyy-MM-dd HH:mm:dd')
+      return this.formatDateTime(this.$store.state.postDetail.updated)
     },
     title() {
       return this.$store.state.postDetail.title
